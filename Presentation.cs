@@ -1,6 +1,6 @@
 using System;
 
-class Node(){
+class Node{
     public int Data;
     public Node Right;
     public Node Left;
@@ -14,10 +14,19 @@ class Node(){
     }
 }
 
-class BST(){
+class BST{
     public Node Root;
+    public Node currentNode;
 
-    if (Root == null){
+    public BST()
+    {
+        if (Root == null)
+        {
+            Root = currentNode;
+        }
+    }
+
+    public addNode(){
 
     }
 }
