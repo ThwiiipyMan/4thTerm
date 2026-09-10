@@ -6,7 +6,7 @@ class Node{
     public Node Left;
     public Node Parent;
 
-    public Node(){
+    public Node(int data){
         this.Data = data;
         this.Right = null;
         this.Left = null;
@@ -18,16 +18,18 @@ class BST{
     public Node Root;
     public Node currentNode;
 
-    public BST()
-    {
-        if (Root == null)
-        {
+    public BST(Node node) {
+        if (Root == null) {
             Root = currentNode;
         }
     }
 
-    public addNode(){
+    public void addNode(Node node){
 
+        currentNode = node;
+        while (currentNode.Data > node.Data) {
+            
+        }
     }
 }
 
