@@ -141,9 +141,16 @@ namespace FourthTerm
             while (true)
             {
                 Console.Write("Enter a number: ");
-                int input = int.Parse(Console.ReadLine()!);
-                if (input == -1) break;
-                tree.Insert(input);
+                try
+                {
+                    int input = int.Parse(Console.ReadLine()!);
+                    if (input == -1) break;
+                    tree.Insert(input);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
             }
         }
 
@@ -170,17 +177,6 @@ namespace FourthTerm
             Console.WriteLine("\n");
         }
 
-        static void DeleteNodeAction()
-        {
-            Console.Write("Enter number to delete: ");
-            int input = int.Parse(Console.ReadLine()!);
-            tree.Delete(input);
-
-            Console.WriteLine("Tree after delete (in order):");
-            tree.InOrder(tree.Root);
-            Console.WriteLine();
-        }
-
         public static void Main(string[] args)
         {
             bool running = true;
@@ -189,26 +185,30 @@ namespace FourthTerm
             {
                 Menu();
                 Console.Write("select action: ");
-                int action = int.Parse(Console.ReadLine()!);
-
-                switch (action)
+                try
                 {
-                    case 1:
-                        InputNodes();
-                        break;
-                    case 2:
-                        DisplayBST();
-                        break;
-                    // case 3:
-                    //     DeleteNodeAction();
-                    //     break;
-                    case 3:
-                        Console.WriteLine("Exiting...");
-                        running = false;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid selection.");
-                        break;
+                    int action = int.Parse(Console.ReadLine()!);
+
+                    switch (action)
+                    {
+                        case 1:
+                            InputNodes();
+                            break;
+                        case 2:
+                            DisplayBST();
+                            break;
+                        case 3:
+                            Console.WriteLine("Exiting...");
+                            running = false;
+                            break;
+                        default:
+                            Console.WriteLine("Invalid selection.");
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
                 }
             }
         }
